@@ -19,9 +19,6 @@ async def start_openai_conversations_session(openai_client: AsyncOpenAI | None =
     return response.id
 
 
-_EMPTY_SESSION_ID = ""
-
-
 class OpenAIConversationsSession(SessionABC):
     def __init__(
         self,
@@ -53,7 +50,7 @@ class OpenAIConversationsSession(SessionABC):
                 order="asc",
             ):
                 # calling model_dump() to make this serializable
-                all_items.append(item.model_dump())
+                all_items.append(item.model_dump(exclude_unset=True))
         else:
             async for item in self._openai_client.conversations.items.list(
                 conversation_id=session_id,
@@ -61,7 +58,7 @@ class OpenAIConversationsSession(SessionABC):
                 order="desc",
             ):
                 # calling model_dump() to make this serializable
-                all_items.append(item.model_dump())
+                all_items.append(item.model_dump(exclude_unset=True))
                 if limit is not None and len(all_items) >= limit:
                     break
             all_items.reverse()

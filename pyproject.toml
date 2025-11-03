@@ -1,14 +1,14 @@
 [project]
 name = "openai-agents"
-version = "0.2.11"
+version = "0.4.2"
 description = "OpenAI Agents SDK"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 authors = [{ name = "OpenAI", email = "support@openai.com" }]
 dependencies = [
-    "openai>=1.104.1,<2",
-    "pydantic>=2.10, <3",
+    "openai>=2.6.1,<3",
+    "pydantic>=2.12.3, <3",
     "griffe>=1.5.6, <2",
     "typing-extensions>=4.12.2, <5",
     "requests>=2.0, <3",
@@ -24,6 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "License :: OSI Approved :: MIT License",
@@ -39,6 +40,8 @@ viz = ["graphviz>=0.17"]
 litellm = ["litellm>=1.67.4.post1, <2"]
 realtime = ["websockets>=15.0, <16"]
 sqlalchemy = ["SQLAlchemy>=2.0", "asyncpg>=0.29.0"]
+encrypt = ["cryptography>=45.0, <46"]
+redis = ["redis>=6.4.0"]
 
 [dependency-groups]
 dev = [
@@ -65,6 +68,8 @@ dev = [
     "eval-type-backport>=0.2.2",
     "fastapi >= 0.110.0, <1",
     "aiosqlite>=0.21.0",
+    "cryptography>=45.0, <46",
+    "fakeredis>=2.31.3",
 ]
 
 [tool.uv.workspace]

@@ -38,7 +38,7 @@ export OPENAI_API_KEY=sk-...
 
 ## 最初のエージェントの作成
 
-エージェントは instructions、名前、および任意の設定（例: `model_config`）で定義します。
+エージェントは、instructions、名前、任意の設定（`model_config` など）で定義します。
 
 ```python
 from agents import Agent
@@ -51,7 +51,7 @@ agent = Agent(
 
 ## いくつかのエージェントの追加
 
-追加のエージェントも同様に定義できます。`handoff_descriptions` は、ハンドオフのルーティング判定に追加のコンテキストを提供します。
+追加のエージェントも同様に定義できます。`handoff_descriptions` は、ハンドオフのルーティングを判断するための追加コンテキストを提供します。
 
 ```python
 from agents import Agent
@@ -71,7 +71,7 @@ math_tutor_agent = Agent(
 
 ## ハンドオフの定義
 
-各エージェントで、タスクを前進させる方法を判断するために選択可能な、外向きハンドオフのオプション一覧を定義できます。
+各エージェントごとに、タスクを進めるために選択できる送信先ハンドオフ オプションの一覧を定義できます。
 
 ```python
 triage_agent = Agent(
@@ -95,7 +95,7 @@ async def main():
 
 ## ガードレールの追加
 
-入力または出力で実行するカスタム ガードレールを定義できます。
+入力または出力に対して実行するカスタム ガードレールを定義できます。
 
 ```python
 from agents import GuardrailFunctionOutput, Agent, Runner
@@ -121,9 +121,9 @@ async def homework_guardrail(ctx, agent, input_data):
     )
 ```
 
-## 統合と実行
+## すべてを組み合わせる
 
-ハンドオフと入力ガードレールを用いて、すべてをまとめてワークフロー全体を実行しましょう。
+ハンドオフと入力ガードレールを使って、すべてを組み合わせたワークフロー全体を実行しましょう。
 
 ```python
 from agents import Agent, InputGuardrail, GuardrailFunctionOutput, Runner
@@ -192,12 +192,12 @@ if __name__ == "__main__":
 
 ## トレースの表示
 
-エージェントの実行中に何が起きたかを確認するには、OpenAI ダッシュボードの [トレース ビューアー](https://platform.openai.com/traces)に移動して、実行のトレースを表示します。
+エージェントの実行中に何が起きたかを確認するには、[OpenAI ダッシュボードの Trace viewer](https://platform.openai.com/traces) に移動し、エージェント実行のトレースを表示します。
 
 ## 次のステップ
 
-より複雑なエージェント フローの構築方法を学びましょう。
+さらに複雑なエージェント フローの構築方法を学びましょう:
 
--   [エージェント](agents.md)の構成について学ぶ。
--   [エージェントの実行](running_agents.md)について学ぶ。
--   [ツール](tools.md)、[ガードレール](guardrails.md)、[モデル](models/index.md)について学ぶ。
+- [エージェント](agents.md) の設定について学ぶ。
+- [エージェントの実行](running_agents.md) について学ぶ。
+- [ツール](tools.md)、[ガードレール](guardrails.md)、[モデル](models/index.md) について学ぶ。
